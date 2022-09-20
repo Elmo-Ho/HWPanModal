@@ -46,7 +46,6 @@
 }
 - (void)setBlurRadius:(CGFloat)blurRadius {
     _blurRadius = blurRadius;
-    NSLog(@"blurRadius:%f",blurRadius);
     self.propertyAnimator.fractionComplete = self.blurRadius;
 }
 - (void)dealloc {
