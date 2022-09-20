@@ -39,7 +39,6 @@
     switch (backgroundBehavior) {
         case HWBackgroundBehaviorSystemVisualEffect: {
             self.visualEffect = [UIBlurEffect effectWithStyle: UIBlurEffectStyleDark];
-            self.backgroundBlurRadius = 0.25;
         }
             break;
         case HWBackgroundBehaviorCustomBlurEffect: {
