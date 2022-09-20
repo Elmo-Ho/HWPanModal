@@ -8,11 +8,11 @@
 #import "HWDimmedView.h"
 #import "HWVisualEffectView.h"
 #import "HWBackgroundConfig.h"
-
+#import "EMVisualEffectView.h"
 @interface HWDimmedView ()
 
 @property (nonatomic, strong) UIView *backgroundView;
-@property (nonatomic, strong) HWVisualEffectView *blurView;
+@property (nonatomic, strong) EMVisualEffectView *blurView;
 @property (nonatomic, strong) HWBackgroundConfig *backgroundConfig;
 
 @property (nonatomic, assign) CGFloat maxDimAlpha;
@@ -75,7 +75,7 @@
 	self.isBlurMode = self.maxBlurRadius > 0 || self.backgroundConfig.visualEffect;
 	if (self.isBlurMode) {
 		[self addSubview:self.blurView];
-        [self configBlurView];
+//        [self configBlurView];
 	} else {
 		[self addSubview:self.backgroundView];
 	}
@@ -141,24 +141,24 @@
 	}
 
 	if (self.isBlurMode) {
-		if (self.backgroundConfig.visualEffect) return;
+//		if (self.backgroundConfig.visualEffect) return;
 
 		self.blurView.blurRadius = blurRadius;
-		self.blurView.colorTintAlpha = blurTintAlpha;
+//		self.blurView.colorTintAlpha = blurTintAlpha;
 	} else {
 		self.backgroundView.alpha = alpha;
 	}
 }
 
-- (void)configBlurView {
-    if (self.backgroundConfig.visualEffect) {
-        [_blurView updateBlurEffect:self.backgroundConfig.visualEffect];
-    } else {
-        _blurView.colorTint = [UIColor whiteColor];
-        _blurView.colorTintAlpha = self.maxBlurTintAlpha;
-        _blurView.userInteractionEnabled = NO;
-    }
-}
+//- (void)configBlurView {
+//    if (self.backgroundConfig.visualEffect) {
+//        [_blurView updateBlurEffect:self.backgroundConfig.visualEffect];
+//    } else {
+//        _blurView.colorTint = [UIColor whiteColor];
+//        _blurView.colorTintAlpha = self.maxBlurTintAlpha;
+//        _blurView.userInteractionEnabled = NO;
+//    }
+//}
 
 #pragma mark - Setter
 
@@ -184,18 +184,19 @@
 	return _backgroundView;
 }
 
-- (HWVisualEffectView *)blurView {
-	if (!_blurView) {
-		_blurView = [HWVisualEffectView new];
-	}
-	return _blurView;
+- (EMVisualEffectView *)blurView {
+    if (!_blurView) {
+        _blurView = [[EMVisualEffectView alloc] initWithEffect:self.backgroundConfig.visualEffect];
+        _blurView.blurRadius = 0.0;
+    }
+    return _blurView;
 }
 
 #pragma mark - Setter
 
 - (void)setBlurTintColor:(UIColor *)blurTintColor {
     _blurTintColor = blurTintColor;
-    _blurView.colorTint = _blurTintColor;
+//    _blurView.colorTint = _blurTintColor;
 }
 
 

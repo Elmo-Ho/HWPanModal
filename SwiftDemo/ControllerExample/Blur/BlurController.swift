@@ -23,11 +23,11 @@ class BlurViewController: UIViewController {
     
     override func backgroundConfig() -> HWBackgroundConfig {
         
-        if #available(iOS 14.0, *) {
+//        if #available(iOS 14.0, *) {
             return HWBackgroundConfig(behavior: .systemVisualEffect)
-        } else {
-            return HWBackgroundConfig(behavior: .customBlurEffect)
-        }
+//        } else {
+//            return HWBackgroundConfig(behavior: .customBlurEffect)
+//        }
         
     }
     
