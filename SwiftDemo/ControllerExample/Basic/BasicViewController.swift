@@ -13,7 +13,7 @@ import HWPanModal
 class BasicViewController: UIViewController {
     
     override func viewDidLoad() {
-        view.backgroundColor = UIColor(displayP3Red: 0.000, green: 0.989, blue: 0.935, alpha: 1.00)
+        view.backgroundColor = UIColor(displayP3Red: 0.000, green: 0.989, blue: 0.935, alpha: 0.70)
     }
 }
 
@@ -24,12 +24,14 @@ extension BasicViewController {
     }
     
     override func longFormHeight() -> PanModalHeight {
-        return PanModalHeightMake(.topInset, 40);
+        return shortFormHeight()
     }
     
     override func transitionAnimationOptions() -> UIView.AnimationOptions {
         return [.curveLinear]
     }
-    
+    override func springDamping() -> CGFloat {
+        return 1
+    }
 }
 

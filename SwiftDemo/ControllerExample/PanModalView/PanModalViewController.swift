@@ -38,8 +38,9 @@ class PanModalViewController : UIViewController {
     func didTapAction() {
         let colorView = PanModalListColorView();
         colorView.present(in: self.navigationController?.view)
+        
     }
-    
+
 }
 
 class PanModalListColorView : HWPanModalContentView {
